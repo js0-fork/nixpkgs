@@ -74,7 +74,7 @@ let
   inPCSystems = lib.any (system: stdenv.hostPlatform.system == system) (lib.attrNames pcSystems);
 
   gnulib = fetchgit {
-    url = "https://https.git.savannah.gnu.org/git/gnulib.git";
+    url = "https://git.savannah.gnu.org/git/gnulib.git";
     # NOTE: keep in sync with bootstrap.conf!
     rev = "9f48fb992a3d7e96610c4ce8be969cff2d61a01b";
     hash = "sha256-mzbF66SNqcSlI+xmjpKpNMwzi13yEWoc1Fl7p4snTto=";
@@ -98,7 +98,7 @@ stdenv.mkDerivation rec {
   version = "2.12";
 
   src = fetchgit {
-    url = "https://https.git.savannah.gnu.org/git/grub.git";
+    url = "https://git.savannah.gnu.org/git/grub.git";
     tag = "grub-${version}";
     hash = "sha256-lathsBb2f7urh8R86ihpTdwo3h1hAHnRiHd5gCLVpBc=";
   };
@@ -504,6 +504,11 @@ stdenv.mkDerivation rec {
       name = "fs_ext2_rework_out-of-bounds_read_for_inline_and_external_extents.patch";
       url = "https://git.savannah.gnu.org/cgit/grub.git/patch/?id=348cd416a3574348f4255bf2b04ec95938990997";
       hash = "sha256-WBLYQxv8si2tvdPAvbm0/4NNqYWBMJpFV4GC0HhN/kE=";
+    })
+    (fetchpatch {
+      name = "CVE-2025-4382.patch";
+      url = "https://git.savannah.gnu.org/cgit/grub.git/patch/?id=c448f511e74cb7c776b314fcb7943f98d3f22b6d";
+      hash = "sha256-64gMhCEW0aYHt46crX/qN/3Hj8MgvWLazgQlVXqe8LE=";
     })
   ];
 
